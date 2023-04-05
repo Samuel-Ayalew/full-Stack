@@ -1,0 +1,21 @@
+package fullStack;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.cdi.JpaRepositoryExtension;
+
+import jakarta.persistence.EntityManager;
+import repository.UserRepository;
+
+@Configuration
+public class MyConfiguration {
+	   @Autowired
+	   private EntityManager entityManager;
+
+	   @Bean
+	   public UserRepository userRepository() {
+	      return (UserRepository) new JpaRepositoryExtension();
+	   }
+
+}
